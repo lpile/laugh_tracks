@@ -3,7 +3,7 @@ class CreateSpecials < ActiveRecord::Migration[5.1]
     create_table :specials do |t|
       t.string :name
       t.integer :running_time
-      t.integer :comedian_id
+      t.references :comedian, foreign_key: true
 
       t.timestamps
     end
