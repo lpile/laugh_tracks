@@ -49,19 +49,6 @@ RSpec.describe "As a visitor" do
     end
   end
 
-  describe "I visit `/comedians`" do
-    it "then I also see a count of their TV specials" do
-      comedian = Comedian.create!(name: "Jim Gaffigan", age: 52, birthplace: "Elgin, IL", image_url: "https://media.timeout.com/images/103872088/1372/772/image.jpg")
-      special_1 = comedian.specials.create(name: "Obsessed", running_time: 60)
-      special_2 = comedian.specials.create(name: "Cinco", running_time: 73)
-      special_3 = comedian.specials.create(name: "Noble Ape", running_time: 90)
-
-      visit "/comedians"
-
-      expect(Special.special_count).to eq(3)
-    end
-  end
-
   describe "I visit `/comedians?age=52`" do
     it "then I see the list of comedians on the page only shows comedians who match the age criteria" do
       comedian_1 = Comedian.create!(name: "Jim Gaffigan", age: 52, birthplace: "Elgin, IL", image_url: "https://media.timeout.com/images/103872088/1372/772/image.jpg")
@@ -78,10 +65,32 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(comedian_1.name)
       expect(page).to have_content(comedian_1.age)
       expect(page).to have_content(comedian_1.birthplace)
-
+      expect(page).to have_css("img[src='#{comedian_1.image_url}']")
       expect(page).to_not have_content(comedian_2.name)
       expect(page).to_not have_content(comedian_2.age)
       expect(page).to_not have_content(comedian_2.birthplace)
+      expect(page).to_not have_css("img[src='#{comedian_2.image_url}']")
+    end
+  end
+
+  describe "I visit `/comedians`" do
+    it "then I also see a count of their TV specials" do
+      comedian = Comedian.create!(name: "Jim Gaffigan", age: 52, birthplace: "Elgin, IL", image_url: "https://media.timeout.com/images/103872088/1372/772/image.jpg")
+      special_1 = comedian.specials.create(name: "Obsessed", running_time: 60)
+      special_2 = comedian.specials.create(name: "Cinco", running_time: 73)
+      special_3 = comedian.specials.create(name: "Noble Ape", running_time: 90)
+
+      visit "/comedians"
+
+      expect(Special.special_count).to eq(3)
+    end
+  end
+
+  describe "I visit `/comedians`" do
+    it "then theres a link to add new comedian" do
+      visit "/comedians"
+
+      expect(page).to have_link('', href: '/comedians/new')
     end
   end
 end
