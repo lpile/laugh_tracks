@@ -33,4 +33,14 @@ describe "user visit /comedians" do
       expect(page).to have_content(special_3.running_time)
     end
   end
+
+  describe "user sees image of comedian" do
+    it "displays thumbnail image for each comedian" do
+      comedian = Comedian.create!(name: "Jim Gaffigan", age: 52, birthplace: "Elgin, IL", image_url: "https://media.timeout.com/images/103872088/1372/772/image.jpg")
+
+      visit comedians_path
+
+      expect(page).to have_css("img[src='#{comedian.image_url}']")
+    end
+  end
 end
