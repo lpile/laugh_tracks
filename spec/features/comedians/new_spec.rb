@@ -13,7 +13,7 @@ RSpec.describe "As a visitor" do
         fill_in 'Name', with: 'Logan Pile'
         fill_in 'Age', with: '33'
         fill_in 'Birthplace', with: 'Oakland, CA'
-        fill_in 'Image_url', with: 'https://media.timeout.com/images/103872088/1372/772/image.jpg'
+        fill_in 'Image url', with: 'https://media.timeout.com/images/103872088/1372/772/image.jpg'
         click_on 'Create Comedian'
 
         new_comedian = Comedian.last
