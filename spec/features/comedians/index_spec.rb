@@ -85,4 +85,12 @@ RSpec.describe "As a visitor" do
       expect(Special.special_count).to eq(3)
     end
   end
+
+  describe "I visit `/comedians`" do
+    it "then theres a link to add new comedian" do
+      visit "/comedians"
+
+      expect(page).to have_link('', href: '/comedians/new')
+    end
+  end
 end
