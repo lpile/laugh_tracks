@@ -1,5 +1,6 @@
 class ComediansController < ApplicationController
   def index
-    @comedians = Comedian.all
+    age = params[:age]
+    age.nil? ? @comedians = Comedian.all : @comedians = Comedian.where(age: age)
   end
 end
