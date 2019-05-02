@@ -1,16 +1,16 @@
 <h1>Comedians</h1>
 <% @comedians.each do |comedian| %>
+  <div>
+    <h2><%= comedian.name %></h2>
+    <p><b>Age:</b> <%= comedian.age %></p>
+    <p><b>Birthplace:</b> <%= comedian.birthplace %></p>
     <div>
-      <h2><%= comedian.name %></h2>
-      <p><b>Age:</b> <%= comedian.age %></p>
-      <p><b>Birthplace:</b> <%= comedian.birthplace %></p>
-      <div>
-        <h4>Specials:</h4>
-        <% comedian.specials.each do |special| %>
-          <p><%= special.name %></p>
-          <p>Length: <%= special.running_time %> minutes</p>
-        <% end %>
-      </div>
-      <img src=<%= comedian.image_url %> alt=<%= comedian.name %> style="width:200px;height:200px;">
+      <h4><%= comedian.specials.special_count %> Specials:</h4>
+      <% comedian.specials.each do |special| %>
+        <p><%= special.name %></p>
+        <p>Length: <%= special.running_time %> minutes</p>
+      <% end %>
     </div>
+    <img src=<%= comedian.image_url %> alt=<%= comedian.name %> style="width:200px;height:200px;">
+  </div>
 <% end %>
