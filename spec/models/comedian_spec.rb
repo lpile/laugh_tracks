@@ -41,6 +41,14 @@ RSpec.describe Comedian, type: :model do
     it '.locations' do
       expect(Comedian.locations).to eq(["Elgin, IL", "Washington, D.C."])
     end
+
+    it '.count_of_specials' do
+      expect(Comedian.count_of_specials).to eq(9)
+    end
+
+    it '.average_of_specials' do
+      expect(Comedian.average_of_specials.to_f.round(1)).to eq(68.3)
+    end
   end
 
   describe 'instance methods' do

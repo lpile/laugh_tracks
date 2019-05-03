@@ -105,6 +105,8 @@ RSpec.describe "As a visitor" do
         expect(page).to have_content("Average age")
         expect(Comedian.avg_age.to_f.round(1)).to eq(49.3)
         expect(Comedian.locations.sort).to eq(["Elgin, IL", "Washington, D.C."])
+        expect(Comedian.count_of_specials).to eq(9)
+        expect(Comedian.average_of_specials.to_f.round(1)).to eq(68.3)
       end
     end
   end
