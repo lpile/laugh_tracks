@@ -1,7 +1,8 @@
 class ComediansController < ApplicationController
   def index
-    age = params[:age]
-    age.nil? ? @comedians = Comedian.all : @comedians = Comedian.where(age: age)
+    @comedians = params[:age] ? Comedian.by_age(params[:age]) : Comedian.all
+    @avg_age = @comedians.avg_age
+    @locations = @comedians.locations
   end
 
   def new
@@ -9,7 +10,8 @@ class ComediansController < ApplicationController
   end
 
   def create
-    Comedian.create(comedian_params)
+    comedian = Comedian.new(comedian_params)
+    comedian.save
     redirect_to '/comedians'
   end
 
