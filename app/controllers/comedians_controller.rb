@@ -15,6 +15,10 @@ class ComediansController < ApplicationController
     redirect_to '/comedians'
   end
 
+  def show
+    @comedian = Comedian.find(params[:id])
+  end
+
   private
 
   def comedian_params

@@ -7,7 +7,8 @@
 </div>
 <% @comedians.each do |comedian| %>
   <div>
-    <h2><%= comedian.name %></h2>
+    <h2><a href="/comedians/<%= comedian.id %>"><%= comedian.name %></h2>
+    <img src=<%= comedian.image_url %> alt=<%= comedian.name %> style="width:200px;height:200px;">
     <p><b>Age:</b> <%= comedian.age %></p>
     <p><b>Birthplace:</b> <%= comedian.birthplace %></p>
     <div>
@@ -17,6 +18,5 @@
         <p>Length: <%= special.running_time %> minutes</p>
       <% end %>
     </div>
-    <img src=<%= comedian.image_url %> alt=<%= comedian.name %> style="width:200px;height:200px;">
   </div>
 <% end %>

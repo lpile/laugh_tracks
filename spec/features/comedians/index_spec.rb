@@ -108,4 +108,20 @@ RSpec.describe "As a visitor" do
       end
     end
   end
+
+  describe "I visit `/comedians`" do
+    describe "I see a link to a page that only shows
+that comedian's information and TV specials" do
+      it "when I click the link" do
+
+        visit comedians_path
+
+        click_link @comedian_1.name
+
+        expect(page).to have_content(@comedian_1.name)
+        expect(page).to have_content(@comedian_1.age)
+        expect(page).to have_content(@comedian_1.birthplace)
+      end
+    end
+  end
 end
