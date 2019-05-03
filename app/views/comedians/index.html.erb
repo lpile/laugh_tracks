@@ -1,5 +1,10 @@
 <h1>Comedians</h1>
 <a href="/comedians/new">Add Comedian</a>
+<div>
+  <h1>Statistics</h1>
+  <p>Average age: <%= @avg_age.round(1)%></p>
+  <p>Locations: <%= @locations.join(", ")%></p>
+</div>
 <% @comedians.each do |comedian| %>
   <div>
     <h2><%= comedian.name %></h2>
