@@ -3,6 +3,8 @@ class ComediansController < ApplicationController
     @comedians = params[:age] ? Comedian.by_age(params[:age]) : Comedian.all
     @avg_age = @comedians.avg_age
     @locations = @comedians.locations
+    @total_specials = @comedians.count_of_specials
+    @average_specials = @comedians.average_of_specials
   end
 
   def new

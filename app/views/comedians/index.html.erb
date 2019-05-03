@@ -4,6 +4,8 @@
   <h1>Statistics</h1>
   <p>Average age: <%= @avg_age.round(1)%></p>
   <p>Locations: <%= @locations.join(", ")%></p>
+  <p>Total specials: <%= @total_specials.round(1)%></p>
+  <p>Average Length of specials: <%= @average_specials.round(1)%></p>
 </div>
 <% @comedians.each do |comedian| %>
   <div>
