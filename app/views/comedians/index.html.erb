@@ -1,24 +1,29 @@
-<h1>Comedians</h1>
-<a href="/comedians/new">Add Comedian</a>
-<div>
-  <h1>Statistics</h1>
-  <p>Average age: <%= @avg_age.round(1)%></p>
-  <p>Locations: <%= @locations.join(", ")%></p>
-  <p>Total specials: <%= @total_specials.round(1)%></p>
-  <p>Average Length of specials: <%= @average_specials.round(1)%></p>
-</div>
-<% @comedians.each do |comedian| %>
+<body style="background: black; color: white">
   <div>
-    <h2><a href="/comedians/<%= comedian.id %>"><%= comedian.name %></h2>
-    <img src=<%= comedian.image_url %> alt=<%= comedian.name %> style="width:200px;height:200px;">
-    <p><b>Age:</b> <%= comedian.age %></p>
-    <p><b>Birthplace:</b> <%= comedian.birthplace %></p>
-    <div>
-      <h4><%= comedian.specials_count %> Specials:</h4>
-      <% comedian.specials.each do |special| %>
-        <p><%= special.name %></p>
-        <p>Length: <%= special.running_time %> minutes</p>
-      <% end %>
-    </div>
+    <h1 style="float:center" align="center">Comedians</h1>
+    <a href="/comedians/new">Add Comedian</a>
   </div>
-<% end %>
+
+  <div>
+    <h2>Statistics</h2>
+    <p>Average age: <%= @avg_age.round(1)%></p>
+    <p>Locations: <%= @locations.join(", ")%></p>
+    <p>Total specials: <%= @total_specials.round(1)%></p>
+    <p>Average Length of specials: <%= @average_specials.round(1)%></p>
+  </div>
+
+  <div>
+    <% @comedians.each do |comedian| %>
+      <h2><a href="/comedians/<%= comedian.id %>"><%= comedian.name %></a></h2>
+      <img src=<%= comedian.image_url %> alt=<%= comedian.name %> style="width:200px;height:200px;">
+      <p><b>Age:</b> <%= comedian.age %></p>
+      <p><b>Birthplace:</b> <%= comedian.birthplace %></p>
+      <div>
+        <h4><%= comedian.specials_count %> Specials:</h4>
+        <% comedian.specials.each do |special| %>
+          <ol><%= special.name %>: <%= special.running_time %> mins</ol>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</body>
