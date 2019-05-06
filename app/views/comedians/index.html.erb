@@ -15,7 +15,7 @@
   <div>
     <% @comedians.each do |comedian| %>
       <h2><a href="/comedians/<%= comedian.id %>"><%= comedian.name %></a></h2>
-      <img src=<%= comedian.image_url %> alt=<%= comedian.name %> style="width:200px;height:200px;">
+      <img src=<%= comedian.image_url %> alt=<%= comedian.name %> style="width:300px;height:200px;">
       <p><b>Age:</b> <%= comedian.age %></p>
       <p><b>Birthplace:</b> <%= comedian.birthplace %></p>
       <div>
